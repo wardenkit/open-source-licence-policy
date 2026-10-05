@@ -1,0 +1,8 @@
+[
+  { "id": "left-pad", "version": "1.3.0", "licenseExpression": "MIT", "source": "internal component inventory" },
+  { "id": "acme-http", "version": "4.2.1", "licenseExpression": "Apache-2.0 OR MIT", "source": "internal component inventory" },
+  { "id": "acme-internal-utils", "version": "0.9.0", "licenseExpression": "LicenseRef-Acme-Internal", "source": "first-party" },
+  { "id": "copyleft-tool", "version": "2.0.0", "licenseExpression": "AGPL-3.0-only", "source": "internal component inventory" },
+  { "id": "legacy-lib", "version": "1.0.0", "licenseExpression": "LGPL-2.1", "source": "internal component inventory" },
+  { "id": "mystery-lib", "version": "0.1.0", "licenseExpression": "Totally-Made-Up-1.0", "source": "internal component inventory" }
+]

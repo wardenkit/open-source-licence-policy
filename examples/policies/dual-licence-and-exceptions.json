@@ -1,0 +1,42 @@
+{
+  "policySchemaVersion": 1,
+  "policyId": "example-dual-licence-and-exceptions",
+  "policyVersion": "1.0.0",
+  "defaultOutcome": "review-required",
+  "complexExpressionTreatment": "review-required",
+  "deprecatedIdTreatment": "review-required",
+  "ciFailureOutcomes": ["policy-denied", "invalid-unsupported"],
+  "rules": [
+    {
+      "ruleId": "allow-apache-or-mit",
+      "match": { "type": "exact-normalized-expression", "expression": "Apache-2.0 OR MIT" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-mit-or-unlicense",
+      "match": { "type": "exact-normalized-expression", "expression": "MIT OR Unlicense" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-gpl-with-classpath-exception",
+      "match": {
+        "type": "exact-normalized-expression",
+        "expression": "GPL-2.0-only WITH Classpath-exception-2.0"
+      },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "review-apache-and-bsd-combination",
+      "match": {
+        "type": "exact-normalized-expression",
+        "expression": "Apache-2.0 AND BSD-3-Clause"
+      },
+      "outcome": "review-required"
+    },
+    {
+      "ruleId": "deny-gpl-3.0-only-without-exception",
+      "match": { "type": "exact-license-id", "licenseId": "GPL-3.0-only" },
+      "outcome": "policy-denied"
+    }
+  ]
+}

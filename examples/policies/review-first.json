@@ -1,0 +1,31 @@
+{
+  "policySchemaVersion": 1,
+  "policyId": "example-review-first",
+  "policyVersion": "1.0.0",
+  "defaultOutcome": "review-required",
+  "complexExpressionTreatment": "review-required",
+  "deprecatedIdTreatment": "review-required",
+  "ciFailureOutcomes": ["policy-denied", "invalid-unsupported"],
+  "rules": [
+    {
+      "ruleId": "allow-mit",
+      "match": { "type": "exact-license-id", "licenseId": "MIT" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-apache-2.0",
+      "match": { "type": "exact-license-id", "licenseId": "Apache-2.0" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "review-mpl-2.0",
+      "match": { "type": "exact-license-id", "licenseId": "MPL-2.0" },
+      "outcome": "review-required"
+    },
+    {
+      "ruleId": "allow-first-party-code",
+      "match": { "type": "exact-license-ref", "licenseRef": "LicenseRef-acme-internal" },
+      "outcome": "policy-allowed"
+    }
+  ]
+}

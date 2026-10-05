@@ -1,0 +1,62 @@
+# Licence policy check on GitHub Actions.
+#
+# Copy to .github/workflows/licence-policy.yml in your own repository.
+#
+# This workflow calls the WardenKit Licence Policy CLI directly. It is not a
+# GitHub Action, and there is no WardenKit marketplace action to install.
+#
+# Evaluation runs entirely on the runner: no network request, no telemetry, and
+# no component record, policy or result leaves the job.
+
+name: Licence policy
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  licence-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # The CLI ships with the package; install it as a dev dependency and pin
+      # it in your lockfile so a build cannot silently change SPDX baseline.
+      - run: npm ci
+
+      # Record the SPDX baseline that decided this run, in the job log.
+      - name: Reference baseline
+        run: npx --no-install wardenkit-licence-policy reference --json
+
+      # Fail before evaluation if the policy document is not valid.
+      - name: Validate policy
+        run: npx --no-install wardenkit-licence-policy validate-policy --policy licence-policy.json --json
+
+      # Exit 1 means an outcome in your own ciFailureOutcomes list occurred.
+      - name: Evaluate licence policy
+        run: |
+          npx --no-install wardenkit-licence-policy evaluate \
+            --components components.json \
+            --policy licence-policy.json \
+            --output licence-policy-result.json \
+            --json
+
+      # Keep the deterministic result even when the previous step failed: it
+      # names every component and records the policy hash and reference version.
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: licence-policy-result
+          path: licence-policy-result.json
+          if-no-files-found: warn

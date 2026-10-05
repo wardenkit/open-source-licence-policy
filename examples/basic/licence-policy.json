@@ -1,0 +1,41 @@
+{
+  "policySchemaVersion": 1,
+  "policyId": "example-basic-licence-policy",
+  "policyVersion": "1.0.0",
+  "defaultOutcome": "review-required",
+  "complexExpressionTreatment": "review-required",
+  "deprecatedIdTreatment": "review-required",
+  "ciFailureOutcomes": ["policy-denied", "invalid-unsupported"],
+  "rules": [
+    {
+      "ruleId": "allow-mit",
+      "match": { "type": "exact-license-id", "licenseId": "MIT" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-apache-2.0",
+      "match": { "type": "exact-license-id", "licenseId": "Apache-2.0" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-bsd-3-clause",
+      "match": { "type": "exact-license-id", "licenseId": "BSD-3-Clause" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-apache-or-mit-dual",
+      "match": { "type": "exact-normalized-expression", "expression": "Apache-2.0 OR MIT" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-own-internal-code",
+      "match": { "type": "exact-license-ref", "licenseRef": "LicenseRef-acme-internal" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "deny-agpl-3.0-only",
+      "match": { "type": "exact-license-id", "licenseId": "AGPL-3.0-only" },
+      "outcome": "policy-denied"
+    }
+  ]
+}

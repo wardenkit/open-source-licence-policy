@@ -1,0 +1,36 @@
+{
+  "policySchemaVersion": 1,
+  "policyId": "example-strict-allowlist",
+  "policyVersion": "1.0.0",
+  "defaultOutcome": "policy-denied",
+  "complexExpressionTreatment": "policy-denied",
+  "deprecatedIdTreatment": "policy-denied",
+  "ciFailureOutcomes": ["policy-denied", "review-required", "invalid-unsupported"],
+  "rules": [
+    {
+      "ruleId": "allow-mit",
+      "match": { "type": "exact-license-id", "licenseId": "MIT" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-apache-2.0",
+      "match": { "type": "exact-license-id", "licenseId": "Apache-2.0" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-bsd-2-clause",
+      "match": { "type": "exact-license-id", "licenseId": "BSD-2-Clause" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-bsd-3-clause",
+      "match": { "type": "exact-license-id", "licenseId": "BSD-3-Clause" },
+      "outcome": "policy-allowed"
+    },
+    {
+      "ruleId": "allow-isc",
+      "match": { "type": "exact-license-id", "licenseId": "ISC" },
+      "outcome": "policy-allowed"
+    }
+  ]
+}
