@@ -1,25 +1,36 @@
-# Open source license policy as code — examples for `@wardenkit/open-source-licence-policy`
+# Open-source licence policy as code
+
+**Turn your licence policy into an enforceable build rule.**
+
+Give WardenKit your software-component list and your licence rules. It validates SPDX licence
+evidence locally and fails CI when a component breaks your policy—without uploading your repository
+to a heavyweight SCA platform.
+
+**Local-first · SPDX-native · Deterministic · CI-ready**
+
+```sh
+npm install @wardenkit/open-source-licence-policy
+```
+
+**Using GitHub? [Add WardenKit to GitHub Actions →](examples/github-actions/)**
+
+- [Product overview and pricing](https://wardenkit.com/products/open-source-licence-policy/) ·
+  [Documentation and quickstart](https://wardenkit.com/docs/open-source-licence-policy/)
+- Free local evaluation needs no account, email, card or licence key. Production — $49/month;
+  Platform / Agency — $149/month.
+- Package: `@wardenkit/open-source-licence-policy` · CLI: `wardenkit-licence-policy`
+
+**Boundaries.** This repository holds public documentation and examples; the SDK is distributed
+through npm. It is not SCA: no dependency discovery, no license detection and no telemetry. It
+evaluates the component records and policy you supply and gives no legal advice.
+
+## About this repository
 
 Runnable examples and reference material for the WardenKit **Open-Source Licence Policy SDK**: a
 local Node.js SDK and CLI that validates and normalizes **SPDX** license expressions against a
 pinned SPDX License List baseline, evaluates a policy **you** author over component records **you**
-supply, and returns reproducible, CI-consumable JSON.
-
-Everything runs in your own process. There is no hosted evaluator, no dependency discovery, no
-license detection and no telemetry.
-
-- **What:** turn the open-source license policy your team already approved (spreadsheet, wiki) into
-  a repeatable policy-as-code CI check over the SPDX license evidence you already hold.
-- **Who:** Node.js, CI, DevSecOps, security and platform teams.
-- **Boundary:** not SCA, not license detection, not legal advice.
-- **Free now:** install and run locally in a minute — no account, email, card or license key.
-- **Production:** upgrade when you need production use rights, the maintained signed Licence
-  Reference Pack and managed Production authorization (Production — $49/month; Platform / Agency —
-  $149/month; details below).
-
-- Product overview: <https://wardenkit.com/products/open-source-licence-policy/>
-- Documentation and quickstart: <https://wardenkit.com/docs/open-source-licence-policy/>
-- Package: `@wardenkit/open-source-licence-policy` · CLI: `wardenkit-licence-policy`
+supply, and returns reproducible, CI-consumable JSON. Everything runs in your own process; there is
+no hosted evaluator.
 
 > **Version.** The examples and reference in this repository are written against the public surface
 > of `@wardenkit/open-source-licence-policy` version `0.1.0`. This repository contains documentation
