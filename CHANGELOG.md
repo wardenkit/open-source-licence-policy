@@ -6,6 +6,15 @@ of the SDK itself is distributed inside the `@wardenkit/open-source-licence-poli
 This file follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) ordering conventions.
 Dates are UTC.
 
+## 0.1.1
+
+### Changed
+
+- Documentation and examples now track `@wardenkit/open-source-licence-policy` version `0.1.1`, a
+  patch release: `activate` prompts for the Activation Code in an interactive terminal without
+  echoing it, and the CLI and managed Production evaluator use the WardenKit commercial perimeter
+  by default. The six-export SDK surface, the six CLI commands and the examples are unchanged.
+
 ## 0.1.0
 
 ### Added
