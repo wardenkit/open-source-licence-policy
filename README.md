@@ -26,14 +26,14 @@ evaluates the component records and policy you supply and gives no legal advice.
 
 ## About this repository
 
-Runnable examples and reference material for the WardenKit **Open-Source Licence Policy SDK**: a
-local Node.js SDK and CLI that validates and normalizes **SPDX** license expressions against a
-pinned SPDX License List baseline, evaluates a policy **you** author over component records **you**
-supply, and returns reproducible, CI-consumable JSON. Everything runs in your own process; there is
-no hosted evaluator.
+Runnable examples and reference material for the WardenKit **Open-Source Licence Policy SDK** —
+open source license policy as code: a local Node.js SDK and CLI that validates and normalizes
+**SPDX** license expressions against a pinned SPDX License List baseline, evaluates a policy **you**
+author over component records **you** supply, and returns reproducible, CI-consumable JSON.
+Everything runs in your own process; there is no hosted evaluator.
 
 > **Version.** The examples and reference in this repository are written against the public surface
-> of `@wardenkit/open-source-licence-policy` version `0.1.0`. This repository contains documentation
+> of `@wardenkit/open-source-licence-policy` version `0.1.1`. This repository contains documentation
 > and examples only; the SDK source is not distributed here.
 
 ## What problem this solves
