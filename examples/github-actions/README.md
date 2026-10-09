@@ -14,6 +14,9 @@ This calls the CLI directly with `npx --no-install`. **There is no WardenKit Git
 install from the marketplace; the CLI inside the npm package is the supported integration, and
 `npm ci` plus your lockfile is what pins the SPDX baseline for the run.
 
+Step-by-step guide:
+[Use the WardenKit Licence Policy CLI in GitHub Actions](https://wardenkit.com/guides/use-the-wardenkit-licence-policy-cli-in-github-actions/).
+
 ## What the workflow does
 
 1. `reference --json` records the SPDX License List version, specification version and content

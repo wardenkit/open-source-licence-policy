@@ -6,6 +6,16 @@ of the SDK itself is distributed inside the `@wardenkit/open-source-licence-poli
 This file follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) ordering conventions.
 Dates are UTC.
 
+## Unreleased
+
+### Changed
+
+- Documentation only; still written against `@wardenkit/open-source-licence-policy` `0.1.1`. The
+  README opens with direct links to free local evaluation, the runnable example, the CI examples,
+  real results, paid-plan value and pricing, and the documentation and guides. It now includes
+  the unedited output of `examples/basic/` on `0.1.1` and the full clone-install-run steps. The
+  generic CI example states the supported Node.js runtimes (`22.x` or `24.x`) exactly.
+
 ## 0.1.1
 
 ### Changed

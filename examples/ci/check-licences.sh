@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Licence policy check for any CI system that can run a POSIX shell and Node.js 22+.
+# Licence policy check for any CI system that can run a POSIX shell and Node.js 22.x or 24.x.
 #
 #   sh examples/ci/check-licences.sh
 #

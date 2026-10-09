@@ -1,7 +1,7 @@
 # Generic CI example
 
 `check-licences.sh` runs the licence policy check on any CI system that provides a POSIX shell and
-Node.js 22 or newer — GitLab CI, CircleCI, Jenkins, Buildkite, Azure Pipelines, a Makefile target, or
+Node.js 22.x or 24.x (the package's supported runtimes) — GitLab CI, CircleCI, Jenkins, Buildkite, Azure Pipelines, a Makefile target, or
 a local pre-release script.
 
 ```bash

@@ -14,10 +14,17 @@ npm install @wardenkit/open-source-licence-policy
 
 **Using GitHub? [Add WardenKit to GitHub Actions →](examples/github-actions/)**
 
-- [Product overview and pricing](https://wardenkit.com/products/open-source-licence-policy/) ·
-  [Documentation and quickstart](https://wardenkit.com/docs/open-source-licence-policy/)
-- Free local evaluation needs no account, email, card or licence key. Production — $49/month;
-  Platform / Agency — $149/month.
+- **Try it free:** [60-second local evaluation](#60-second-local-evaluation) — no account, email,
+  card or licence key.
+- **Runnable example:** [`examples/basic/`](examples/basic/) — the SDK and the CLI over a sample
+  policy and six component records.
+- **CI:** [GitHub Actions workflow](examples/github-actions/) · [any other CI](examples/ci/)
+- **Real results:** [what the example prints on `0.1.1`](#real-policy-results)
+- **Production and Platform / Agency:** [what the paid plans add](#free-evaluation-and-paid-production-use)
+  · [pricing](https://wardenkit.com/products/open-source-licence-policy/#pricing) — Production
+  $49/month; Platform / Agency $149/month.
+- **Docs:** [Documentation and quickstart](https://wardenkit.com/docs/open-source-licence-policy/)
+  · [Guides](#documentation-and-guides)
 - Package: `@wardenkit/open-source-licence-policy` · CLI: `wardenkit-licence-policy`
 
 **Boundaries.** This repository holds public documentation and examples; the SDK is distributed
@@ -65,9 +72,14 @@ Supported runtimes: Node.js 22.x and 24.x.
 No account, no email address, no license key, no network call.
 
 ```bash
-cd examples/basic
+git clone https://github.com/wardenkit/open-source-licence-policy.git
+cd open-source-licence-policy/examples/basic
+npm install @wardenkit/open-source-licence-policy
 node check-licences.mjs
 ```
+
+The run exits `1` on purpose: the sample policy blocks two of the six sample components. See
+[Real policy results](#real-policy-results) for the exact output.
 
 Or with the CLI directly:
 
@@ -109,6 +121,64 @@ Two inputs, both yours:
 
 The license identifiers in every example are illustrations of a *customer-authored* policy. Which
 licenses your organization allows, denies or sends to review is your decision.
+
+## Real policy results
+
+Unedited output of `node check-licences.mjs` in [`examples/basic/`](examples/basic/) with
+`@wardenkit/open-source-licence-policy` `0.1.1` on Node.js 22 and 24 (identical on both):
+
+```text
+policy example-basic-licence-policy@1.0.0 hash b52e45c0d66243c50f20b4e3434212c913fd35843228b61c73961e11b924c318
+policy-allowed       acme-http (Apache-2.0 OR MIT) decided by rule
+policy-allowed       acme-internal-utils (LicenseRef-acme-internal) decided by rule
+policy-denied        copyleft-tool (AGPL-3.0-only) decided by rule
+policy-allowed       left-pad (MIT) decided by rule
+review-required      legacy-lib (LGPL-2.1) decided by deprecatedIdTreatment
+  EXPR_DEPRECATED_ID: SPDX licence identifier "LGPL-2.1" is deprecated.
+invalid-unsupported  mystery-lib (mystery-lib) decided by grammar
+  EXPR_UNKNOWN_ID: Unknown SPDX licence identifier "Totally-Made-Up-1.0".
+
+aggregate: invalid-unsupported over 6 components
+counts: {"policy-allowed":3,"policy-denied":1,"review-required":1,"invalid-unsupported":1}
+product 0.1.1 · reference spdx-license-list-3.28.0/snapshot-1
+SPDX List 3.28.0 · spec 3.0.1
+licence policy: blocking outcome
+```
+
+Exit code `1`: this sample policy lists `policy-denied` and `invalid-unsupported` in its own
+`ciFailureOutcomes`. The same inputs through
+`npx wardenkit-licence-policy evaluate --components components.json --policy licence-policy.json --output licence-policy-result.json --json`
+write a JSON result. An excerpt:
+
+```json
+{
+  "aggregate": {
+    "outcome": "invalid-unsupported",
+    "componentCount": 6,
+    "ciBlocking": true,
+    "counts": { "policy-allowed": 3, "policy-denied": 1, "review-required": 1, "invalid-unsupported": 1 }
+  },
+  "components": [
+    {
+      "id": "copyleft-tool",
+      "normalizedExpression": "AGPL-3.0-only",
+      "shape": "listed-id",
+      "outcome": "policy-denied",
+      "decidedBy": "rule",
+      "matchedRuleId": "deny-agpl-3.0-only"
+    }
+  ],
+  "provenance": {
+    "productVersion": "0.1.1",
+    "policyId": "example-basic-licence-policy",
+    "policyHash": "b52e45c0d66243c50f20b4e3434212c913fd35843228b61c73961e11b924c318",
+    "reference": { "referenceVersion": "spdx-license-list-3.28.0/snapshot-1", "spdxLicenseListVersion": "3.28.0" }
+  }
+}
+```
+
+These are results of a sample, customer-authored policy over sample component records, not a
+recommendation about which licenses to allow.
 
 ## Result model
 
@@ -220,6 +290,20 @@ Global flags: `--json`, `--state-dir`.
 
 There is no WardenKit GitHub Action and none is required: the CI contract is the CLI exit code plus
 the JSON result file.
+
+## Documentation and guides
+
+- [Documentation](https://wardenkit.com/docs/open-source-licence-policy/):
+  [quickstart](https://wardenkit.com/docs/open-source-licence-policy/#quickstart) ·
+  [CLI reference](https://wardenkit.com/docs/open-source-licence-policy/#cli) ·
+  [reading the result](https://wardenkit.com/docs/open-source-licence-policy/#result) ·
+  [running in CI](https://wardenkit.com/docs/open-source-licence-policy/#ci) ·
+  [entitlement and activation](https://wardenkit.com/docs/open-source-licence-policy/#entitlement)
+- [Open-source license policy as code](https://wardenkit.com/guides/open-source-license-policy-as-code/)
+- [Use the WardenKit Licence Policy CLI in GitHub Actions](https://wardenkit.com/guides/use-the-wardenkit-licence-policy-cli-in-github-actions/)
+- [Run license policy checks in CI](https://wardenkit.com/guides/run-license-policy-checks-in-ci/)
+- [Validate SPDX license expressions in Node.js](https://wardenkit.com/guides/validate-spdx-license-expressions-in-node-js/)
+- [SPDX license expression reference](https://wardenkit.com/guides/spdx-license-expression-reference/)
 
 ## Data boundary
 
