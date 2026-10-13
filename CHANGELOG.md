@@ -6,11 +6,15 @@ of the SDK itself is distributed inside the `@wardenkit/open-source-licence-poli
 This file follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) ordering conventions.
 Dates are UTC.
 
-## Unreleased
+## 0.1.2
 
 ### Changed
 
-- Documentation only; still written against `@wardenkit/open-source-licence-policy` `0.1.1`. The
+- Documentation and examples now track `@wardenkit/open-source-licence-policy` version `0.1.2`, a
+  patch (documentation) release of the package: its README now uses plain customer-facing wording.
+  The six-export SDK surface, the six CLI commands, evaluation behaviour and the examples are
+  unchanged; the example output differs only in the reported product version (`product 0.1.2`).
+- Earlier documentation-only update, written against `@wardenkit/open-source-licence-policy` `0.1.1`. The
   README opens with direct links to free local evaluation, the runnable example, the CI examples,
   real results, paid-plan value and pricing, and the documentation and guides. It now includes
   the unedited output of `examples/basic/` on `0.1.1` and the full clone-install-run steps. The

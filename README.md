@@ -19,7 +19,7 @@ npm install @wardenkit/open-source-licence-policy
 - **Runnable example:** [`examples/basic/`](examples/basic/) — the SDK and the CLI over a sample
   policy and six component records.
 - **CI:** [GitHub Actions workflow](examples/github-actions/) · [any other CI](examples/ci/)
-- **Real results:** [what the example prints on `0.1.1`](#real-policy-results)
+- **Real results:** [what the example prints on `0.1.2`](#real-policy-results)
 - **Production and Platform / Agency:** [what the paid plans add](#free-evaluation-and-paid-production-use)
   · [pricing](https://wardenkit.com/products/open-source-licence-policy/#pricing) — Production
   $49/month; Platform / Agency $149/month.
@@ -40,7 +40,7 @@ author over component records **you** supply, and returns reproducible, CI-consu
 Everything runs in your own process; there is no hosted evaluator.
 
 > **Version.** The examples and reference in this repository are written against the public surface
-> of `@wardenkit/open-source-licence-policy` version `0.1.1`. This repository contains documentation
+> of `@wardenkit/open-source-licence-policy` version `0.1.2`. This repository contains documentation
 > and examples only; the SDK source is not distributed here.
 
 ## What problem this solves
@@ -125,7 +125,7 @@ licenses your organization allows, denies or sends to review is your decision.
 ## Real policy results
 
 Unedited output of `node check-licences.mjs` in [`examples/basic/`](examples/basic/) with
-`@wardenkit/open-source-licence-policy` `0.1.1` on Node.js 22 and 24 (identical on both):
+`@wardenkit/open-source-licence-policy` `0.1.2` on Node.js 22 and 24 (identical on both):
 
 ```text
 policy example-basic-licence-policy@1.0.0 hash b52e45c0d66243c50f20b4e3434212c913fd35843228b61c73961e11b924c318
@@ -140,7 +140,7 @@ invalid-unsupported  mystery-lib (mystery-lib) decided by grammar
 
 aggregate: invalid-unsupported over 6 components
 counts: {"policy-allowed":3,"policy-denied":1,"review-required":1,"invalid-unsupported":1}
-product 0.1.1 · reference spdx-license-list-3.28.0/snapshot-1
+product 0.1.2 · reference spdx-license-list-3.28.0/snapshot-1
 SPDX List 3.28.0 · spec 3.0.1
 licence policy: blocking outcome
 ```
@@ -169,7 +169,7 @@ write a JSON result. An excerpt:
     }
   ],
   "provenance": {
-    "productVersion": "0.1.1",
+    "productVersion": "0.1.2",
     "policyId": "example-basic-licence-policy",
     "policyHash": "b52e45c0d66243c50f20b4e3434212c913fd35843228b61c73961e11b924c318",
     "reference": { "referenceVersion": "spdx-license-list-3.28.0/snapshot-1", "spdxLicenseListVersion": "3.28.0" }

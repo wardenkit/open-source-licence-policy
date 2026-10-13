@@ -47,7 +47,7 @@ which licences you should allow, deny or review; that decision is yours.
 
 ## Expected output
 
-Unedited output with `@wardenkit/open-source-licence-policy` `0.1.1` (exit code `1`):
+Unedited output with `@wardenkit/open-source-licence-policy` `0.1.2` (exit code `1`):
 
 ```text
 policy example-basic-licence-policy@1.0.0 hash b52e45c0d66243c50f20b4e3434212c913fd35843228b61c73961e11b924c318
@@ -62,7 +62,7 @@ invalid-unsupported  mystery-lib (mystery-lib) decided by grammar
 
 aggregate: invalid-unsupported over 6 components
 counts: {"policy-allowed":3,"policy-denied":1,"review-required":1,"invalid-unsupported":1}
-product 0.1.1 · reference spdx-license-list-3.28.0/snapshot-1
+product 0.1.2 · reference spdx-license-list-3.28.0/snapshot-1
 SPDX List 3.28.0 · spec 3.0.1
 licence policy: blocking outcome
 ```
